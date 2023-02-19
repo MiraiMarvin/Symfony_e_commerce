@@ -1,0 +1,37 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}ArtWorkCategory index{% endblock %}
+
+{% block body %}
+    <h1>ArtWorkCategory index</h1>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Name</th>
+                <th>Image</th>
+                <th>actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for art_work_category in art_work_categories %}
+            <tr>
+                <td>{{ art_work_category.id }}</td>
+                <td>{{ art_work_category.name }}</td>
+                <td>{{ art_work_category.image }}</td>
+                <td>
+                    <a href="{{ path('app_art_work_category_show', {'id': art_work_category.id}) }}">show</a>
+                    <a href="{{ path('app_art_work_category_edit', {'id': art_work_category.id}) }}">edit</a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="4">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <a href="{{ path('app_art_work_category_new') }}">Create new</a>
+{% endblock %}
